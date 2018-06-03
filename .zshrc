@@ -1,12 +1,25 @@
-source ~/.antigen.zsh
+source ~/.antigen/antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-# Syntax highlighting bundle.
+# Load all the extra modules
+antigen bundle git
+antigen bundle npm
+antigen bundle encode64
+antigen bundle colorize
+antigen bundle github
+antigen bundle brew
+antigen bundle osx
+antigen bundle rails
+antigen bundle ruby
+antigen bundle capistrano
+antigen bundle bundler
+
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 antigen bundle peterhurford/git-it-on.zsh
+antigen bundle zsh-users/zsh-autosuggestions
 
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle rupa/z
