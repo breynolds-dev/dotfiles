@@ -1,35 +1,33 @@
-source ~/.antigen/antigen.zsh
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+source ~/.antigen.zsh
 
 # Load the oh-my-zsh's library.
 antigen use oh-my-zsh
 
-# Load all the extra modules
-antigen bundle git
-antigen bundle npm
-antigen bundle encode64
-antigen bundle colorize
-antigen bundle github
-antigen bundle brew
-antigen bundle osx
-antigen bundle rails
-antigen bundle ruby
-antigen bundle capistrano
-antigen bundle bundler
-
+# Syntax highlighting bundle.
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle trapd00r/zsh-syntax-highlighting-filetypes
 antigen bundle peterhurford/git-it-on.zsh
 antigen bundle zsh-users/zsh-autosuggestions
 
+# External plugins
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle rupa/z
+
+function chpwd() {
+    emulate -L zsh
+    ls -lFh --color=auto
+}
 
 # -------------------------------------------------------------------
 # some alias settings, just for fun
 # -------------------------------------------------------------------
-#alias 'today=calendar -A 0 -f ~/calendar/calendar.mark | sort'
 alias lh='ls -a | egrep "^\."'
 alias reload="source ~/.zshrc"
+alias c=clear
 
 # -------------------------------------------------------------------
 # Git
@@ -39,16 +37,18 @@ alias gp='git push'
 alias gl='git log'
 alias gs='git status'
 alias gd='git diff'
-alias gm='git commit -m'
+alias gcm='git commit -m'
 alias gma='git commit -am'
 alias gb='git branch'
-alias gc='git checkout'
+alias gco='git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias gpu='git pull'
 alias gcl='git clone'
 alias gta='git tag -a -m'
 alias gf='git reflog'
+
+alias matrix="~/./matrix.sh"
 
 # -------------------------------------------------------------------
 # Theme
@@ -194,5 +194,13 @@ POWERLEVEL9K_BATTERY_DISCONNECTED_BACKGROUND="$DEFAULT_BACKGROUND"
 
 antigen theme bhilburn/powerlevel9k powerlevel9k
 
+ZLE_RPROMPT_INDENT=0
+
 # Tell Antigen that you're done.
 antigen apply
+
+# ~/.oh-my-zsh/plugins/z/z.sh
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$PATH
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH
