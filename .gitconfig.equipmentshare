@@ -1,0 +1,17 @@
+
+# This is Git's per-user configuration file.
+[user]
+	name = Brian Reynolds
+	email = brian.reynolds@equipmentshare.com
+# Please adapt and uncomment the following lines:
+#	name = Brian Reynolds
+#	email = brian.reynolds@equipmentshare.com
+[core]
+	editor = nano
+[push]
+	default = current
+[alias]
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P

@@ -129,3 +129,21 @@ function build_mah_prompt {
 PROMPT_COMMAND='build_mah_prompt'
 
 eval "$(thefuck --alias)"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+function terraform-plan-file() {
+    if [ "$1" == "" ]; then
+        echo 'Usage: terraform-plan-file file.tf'
+        return 1
+    fi
+
+    which terraform > /dev/null \
+        || (echo 'Error: terraform not found.'; return 1)
+
+    grep '^resource' $1 \
+        | awk -F'"' '{print $2 "." $4}' \
+        | xargs -n 1 echo '-target' \
+        | xargs terraform plan -out plan.out
+}
+
