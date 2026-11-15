@@ -51,6 +51,9 @@ link "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 echo "==> Agent skills"
 "$DOTFILES_DIR/scripts/install-skills.sh"
 
+echo "==> Node (nvm)"
+"$DOTFILES_DIR/scripts/install-node.sh"
+
 echo "==> colorls"
 "$DOTFILES_DIR/scripts/install-colorls.sh"
 

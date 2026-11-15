@@ -11,6 +11,10 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.4
 fi
 
+# nvm (Homebrew); loaded here so the oh-my-zsh nvm plugin sees it and skips its own lookup
+export NVM_DIR="$HOME/.nvm"
+[[ -s /opt/homebrew/opt/nvm/nvm.sh ]] && source /opt/homebrew/opt/nvm/nvm.sh
+
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="robbyrussell"
