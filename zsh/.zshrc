@@ -11,9 +11,26 @@ source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.4
 fi
 
-# nvm (Homebrew); loaded here so the oh-my-zsh nvm plugin sees it and skips its own lookup
+# nvm (Homebrew), lazy loaded: the default Node's bin goes on PATH now, and the
+# full nvm loads on the first call to `nvm` (or node/npm/npx while no default exists)
 export NVM_DIR="$HOME/.nvm"
-[[ -s /opt/homebrew/opt/nvm/nvm.sh ]] && source /opt/homebrew/opt/nvm/nvm.sh
+if [[ -s /opt/homebrew/opt/nvm/nvm.sh ]]; then
+  if [[ -r $NVM_DIR/alias/default ]]; then
+    _nvm_node=( $NVM_DIR/versions/node/v${$(<$NVM_DIR/alias/default)#v}*(Non[-1]) )
+    [[ -n $_nvm_node ]] && path=( $_nvm_node/bin $path )
+    unset _nvm_node
+  fi
+  _nvm_load() {
+    unset -f nvm _nvm_load
+    source /opt/homebrew/opt/nvm/nvm.sh
+  }
+  nvm() { _nvm_load; nvm "$@" }
+  if (( ! $+commands[node] )); then
+    node() { _nvm_load; nvm use default >/dev/null; unset -f node npm npx; node "$@" }
+    npm() { _nvm_load; nvm use default >/dev/null; unset -f node npm npx; npm "$@" }
+    npx() { _nvm_load; nvm use default >/dev/null; unset -f node npm npx; npx "$@" }
+  fi
+fi
 
 # oh-my-zsh
 export ZSH="$HOME/.oh-my-zsh"

@@ -15,7 +15,7 @@ Everything needed to set up a new machine (macOS first).
 | `scripts/install-skills.sh` | Initialises it against this repo, installs skills, syncs |
 | `skills/` | skillshare **source**: the AI agent skills, synced to every agent |
 | `agents/` | skillshare agents source (empty) |
-| `zsh/.zshrc` | Sanitized zsh config (IRIS init, nvm, chruby, oh-my-zsh, p10k if present, colorls completion), symlinked to `~/.zshrc`. An existing `~/.zshrc` is backed up. Machine-specific config goes in untracked `~/.zshrc.local`. |
+| `zsh/.zshrc` | Sanitized zsh config (IRIS init, lazy-loaded nvm, chruby, oh-my-zsh, p10k if present, colorls completion), symlinked to `~/.zshrc`. An existing `~/.zshrc` is backed up. Machine-specific config goes in untracked `~/.zshrc.local`. |
 
 ## Agent skills (skillshare)
 
