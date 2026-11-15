@@ -1,5 +1,3 @@
-tap "versenilvis/iris"
-
 brew "chruby"
 brew "gh"
 brew "git"
@@ -11,7 +9,6 @@ brew "pnpm"
 brew "pyenv"
 brew "ruby-install"
 brew "skillshare"
-brew "versenilvis/iris/iris"
 
 cask "claude"
 cask "codex"

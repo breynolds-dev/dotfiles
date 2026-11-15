@@ -29,9 +29,6 @@ else
 fi
 
 echo "==> brew bundle"
-# IRIS comes from a third-party tap; Homebrew requires an explicit trust for it
-brew tap versenilvis/iris
-brew trust --formula versenilvis/iris/iris
 brew bundle --file="$DOTFILES_DIR/Brewfile"
 
 echo "==> oh-my-zsh"

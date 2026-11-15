@@ -1,9 +1,6 @@
 # Managed in ~/Development/dotfiles/zsh/.zshrc (symlinked to ~/.zshrc).
 # Machine-specific additions go in ~/.zshrc.local (not tracked).
 
-# IRIS autocomplete
-command -v iris >/dev/null && eval "$(iris init zsh)"
-
 # chruby
 if [[ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]]; then
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
