@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
 # Bootstrap a new machine (macOS).
-# The repo is private, so the raw URL needs auth. On a new machine, either:
-#   gh auth login && gh api repos/breynolds-dev/dotfiles/contents/install.sh -H "Accept: application/vnd.github.raw" | bash
-# or clone it over SSH and run ./install.sh. The clone below uses SSH, so an SSH key must be set up.
+#   curl -fsSL https://raw.githubusercontent.com/breynolds-dev/dotfiles/main/install.sh | bash
 # Safe to re-run.
 set -euo pipefail
 
-REPO_URL="git@github.com:breynolds-dev/dotfiles.git"
+REPO_URL="https://github.com/breynolds-dev/dotfiles.git"
 DOTFILES_DIR="${DOTFILES_DIR:-$HOME/Development/dotfiles}"
 
 if [ "$(uname -s)" != "Darwin" ]; then
