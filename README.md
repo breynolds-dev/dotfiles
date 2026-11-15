@@ -57,11 +57,23 @@ machine.
 
 ## Planned
 
-1. Publish as a public repo so this works:
+1. Push to the private GitHub repo and test bootstrapping a clean machine.
 
-   ```zsh
-   curl -fsSL https://raw.githubusercontent.com/breynolds-dev/dotfiles/main/install.sh | bash
-   ```
+## Bootstrap (private repo)
+
+The repo is private, so the unauthenticated `curl .../raw.githubusercontent.com/...`
+one-liner does not work. `install.sh` clones over SSH, so the new machine needs
+an SSH key registered with GitHub first. Then either:
+
+```zsh
+git clone git@github.com:breynolds-dev/dotfiles.git ~/Development/dotfiles && ~/Development/dotfiles/install.sh
+```
+
+or, with `gh` already authenticated:
+
+```zsh
+gh api repos/breynolds-dev/dotfiles/contents/install.sh -H "Accept: application/vnd.github.raw" | bash
+```
 
 Never commit secrets.
 
