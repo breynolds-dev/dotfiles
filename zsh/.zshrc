@@ -40,6 +40,9 @@ ENABLE_CORRECTION="true"
 plugins=(git z nvm)
 [[ -f $ZSH/oh-my-zsh.sh ]] && source $ZSH/oh-my-zsh.sh
 
+# Drop oh-my-zsh's nocorrect aliases so zsh can correct these commands
+unalias cp man mkdir mv sudo su 2>/dev/null
+
 # Powerlevel10k config, if present (run `p10k configure` to create it)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
